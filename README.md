@@ -10,7 +10,11 @@
 - Web 3 version Number
 
 ## UML Docs
-- Activity
-- Sequence
 - State
 - Class (data model)
+
+### Activity Diagram
+![Activity Diagram](images/SupplyChain.png)
+
+### Sequence Diagram
+![Sequence Diagram](images/Sequence.png)
