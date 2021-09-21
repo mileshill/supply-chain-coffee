@@ -1,15 +1,7 @@
 {
-  "name": "udacity-supply-chain",
-  "version": "1.0.0",
-  "description": "",
-  "main": "truffle-config.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "openzeppelin-solidity": "2.3",
+    "truffle-hdwallet-provider": "^1.0.6",
+    "web3": "^1.5.2"
+  }
 }

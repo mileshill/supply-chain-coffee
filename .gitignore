@@ -498,3 +498,5 @@ node_modules
 bin_output
 logs
 
+# Eth
+.secret
