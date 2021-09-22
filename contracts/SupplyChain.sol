@@ -34,6 +34,11 @@ contract SupplyChain is ERC721 {
         _;
     }
 
+    modifier isFarmer(uint _sku) {
+        require(coffees[_sku].farmer == msg.sender);
+        _;
+    }
+
     modifier paidEnough(uint _price){
         require(msg.value >= _price);
         _;
@@ -53,6 +58,8 @@ contract SupplyChain is ERC721 {
 
     /// @author Miles Hill
     /// @notice Creates a plants a Coffee instance
+    /// @dev Sets the farmer as the initiating address
+    /// @param _id The _id allows the user to uniquely tag the coffee
     function plantCoffee (uint _id) public {
         skuCount = skuCount += 1;
         coffees[skuCount] = Coffee({
@@ -68,6 +75,17 @@ contract SupplyChain is ERC721 {
         emit Planted(skuCount);
     }
 
+    /// @author Miles Hill
+    /// @notice Modifies the state of coffee
+    /// @param _sku SKU of coffee
+    function harvestCoffee(uint _sku) isFarmer(_sku) public {
+        coffees[_sku].state = State.Harvest;
+        emit Harvested(_sku);
+    }
+
+    /// @author Miles Hill
+    /// @notice Harvest coffee based on _sku
+    /// @param _sku SKU of coffee
     function fetchCoffee(uint _sku) public view returns (
         uint id, uint sku, uint price, string memory stateIs, address farmer, address inspector, address distributor, address consumer
     ){
